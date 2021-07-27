@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script>
+
+  </script>
+</head>
+
+<body>
+  <h1>
+    <%= title %>
+  </h1>
+  <p>서버 Url : <%= Url %><br />현재 Url : <%= hUrl %>
+  </p>
+
+  <br /> =========QS_001===========
+  <br /> =========로그인===========<br />
+  <form name="frm1" method="POST">
+    <%= Url %>users/login
+      <input type="text" name="SID" style="width:130px" placeholder="SID">
+      <input type="text" name="PassWord" style="width:130px" placeholder="PassWord">
+      <input value="로그인" onclick="javascript: frm1.action='/users/login';" type="submit" /><br />
+      00001, 1234
+  </form><br />
+  =========QS_002=========== <br />
+  =========매장정보===========<br />
+  <form name="frm4" method="POST">
+    <%= Url %>store/store
+      <input type="text" name="StoreId" style="width:80px" placeholder="StoreId">
+      <input value="로그인" onclick="javascript: frm4.action='/store/store';" type="submit" /><br />
+      1
+  </form><br />
+
+  =========QS_008=========== <br />
+  =========메뉴정보===========<br />
+  <form name="frm10" method="POST">
+    <%= Url %>menu/menulist
+      <input type="text" name="StoreId" style="width:80px" placeholder="StoreId">
+      <input value="조회" onclick="javascript: frm10.action='/menu/menulist';" type="submit" /><br />
+      1
+  </form><br />
+
+  =========QS_018=========== <br />
+  =========총 주문목록(전체 값 보여줌)===========<br />
+  <form name="frm18" method="POST">
+    <%= Url %>orders/allorderlist
+      <input type="text" name="StoreId" style="width:80px" placeholder="StoreId">
+      <input value="조회" onclick="javascript: frm18.action='/orders/allorderlist';" type="submit" /><br />
+      1
+  </form><br />
+  =========QS_019=========== <br />
+  =========주문상세===========<br />
+  <form name="frm19" method="POST">
+    <%= Url %>orders/orderlistDetail
+      <!-- <input type="text" name="StoreId" style="width:80px" placeholder="StoreId"> -->
+      <input type="text" name="UserPayid" style="width:140px" placeholder="UserPayid">
+      <input value="조회" onclick="javascript: frm19.action='/orders/orderlistDetail';" type="submit" /><br />
+      210226-imp_046036333181
+  </form><br />
+  =========QS_020=========== <br />
+  =========주문알림===========<br />
+
+  
+  <form name="frm20" method="POST">
+
+  </form><br />
+
+  =========QS_021=========== <br />
+  =========접수전 주문목록(OC만 나옴)===========<br />
+  <form name="frm21" method="POST">
+    <%= Url %>orders/OCorderlist
+      <input type="text" name="StoreId" style="width:80px" placeholder="StoreId">
+      <input value="조회" onclick="javascript: frm21.action='/orders/OCorderlist';" type="submit" /><br />
+      1
+  </form><br />
+  =========QS_017=========== <br />
+  =========제조완료 전 주문목록(RC,PC값만 보여줌)===========<br />
+  <form name="frm17" method="POST">
+    <%= Url %>orders/orderlist
+      <input type="text" name="StoreId" style="width:80px" placeholder="StoreId">
+      <input value="조회" onclick="javascript: frm17.action='/orders/RCorderlist';" type="submit" /><br />
+      1
+  </form><br />
+  =========QS_022=========== <br />
+  =========주문접수OC->RC===========<br />
+  <form name="frm22" method="POST">
+    <%= Url %>orders/OCRCchange
+      <input type="text" name="StoreId" style="width:80px" placeholder="StoreId">
+      <input type="text" name="UserPayId" style="width:140px" placeholder="UserPayId">
+      <input value="변경" onclick="javascript: frm22.action='/orders/OCRCchange';" type="submit" />
+      <input value="롤백(RC->OC)" onclick="javascript: frm22.action='/orders/OCrollback';" type="submit" /><br />
+      1,210226-imp_046036333181
+  </form><br />
+  =========QS_023=========== <br />
+  =========제조완료RC->PC===========<br />
+  <form name="frm23" method="POST">
+    <%= Url %>orders/RCPCchange
+      <input type="text" name="StoreId" style="width:80px" placeholder="StoreId">
+      <input type="text" name="UserPayId" style="width:140px" placeholder="UserPayId">
+      <input value="변경" onclick="javascript: frm23.action='/orders/RCPCchange';" type="submit" />
+      <input value="롤백(PC->RC)" onclick="javascript: frm23.action='/orders/RCrollback';" type="submit" /><br />
+      1,210226-imp_046036333181
+  </form><br />
+  =========QS_024=========== <br />
+  =========픽업완료PC->PUC===========<br />
+  <form name="frm24" method="POST">
+    <%= Url %>orders/RCPCchange
+      <input type="text" name="StoreId" style="width:80px" placeholder="StoreId">
+      <input type="text" name="UserPayId" style="width:140px" placeholder="UserPayId">
+      <input value="변경" onclick="javascript: frm24.action='/orders/PCPUCchange';" type="submit" />
+      <input value="롤백(PUC->PC)" onclick="javascript: frm24.action='/orders/PCrollback';" type="submit" /><br />
+      1,210226-imp_046036333181
+  </form><br />
+  =========QS_027 =========== <br />
+  =========사용자 아이디, 토큰 보내면 DB에서 사용자 토큰 수정===========<br />
+  <form name="frm25" method="POST">
+    <%= Url %>users/tokenupdate
+    <input type="text" name="SID" style="width:130px" placeholder="SID">
+    <input type="text" name="Token" style="width:130px" placeholder="Token">
+    <input value="수정" onclick="javascript: frm25.action='/users/tokenupdate';"  type="submit" /> <br/>
+    00001, 
+  </form><br />
+  =========QS_028 =========== <br />
+  =========공지사항 등록===========<br />
+  <form name="frm26" method="POST">
+    <%= Url %>notice/inotice
+    <input type="text" name="StoreId" style="width:60px" placeholder="StoreId">
+    <input type="date" name="StartDate" style="width:120px" placeholder="StartDate">
+    <input type="date" name="EndDate" style="width:120px" placeholder="EndDate">
+    <input type="text" name="Title" style="width:130px" placeholder="Title">
+    <input type="text" name="DisCription" style="width:130px" placeholder="DisCription">
+    <input value="등록" onclick="javascript: frm26.action='/notice/inotice';"  type="submit" /> <br/>
+    1,공지제목입니다, https://heronoah.github.io/Tera_Quaca_Common/notice_sample.png, Y
+  </form><br />
+  =========QS_029 =========== <br />
+  =========공지사항 수정===========<br />
+  <form name="frm27" method="POST">
+    <%= Url %>notice/unotice
+    <input type="text" name="StoreId" style="width:60px" placeholder="StoreId">
+    <input type="date" name="StartDate" style="width:120px" placeholder="StartDate">
+    <input type="date" name="EndDate" style="width:120px" placeholder="EndDate">
+    <input type="text" name="Title" style="width:130px" placeholder="Title">
+    <input type="text" name="DisCription" style="width:130px" placeholder="DisCription">
+    <input value="수정" onclick="javascript: frm27.action='/notice/unotice';"  type="submit" /> <br/>
+    1,공지제목입니다, https://heronoah.github.io/Tera_Quaca_Common/notice_sample.png, Y
+  </form><br />
+  =========QS_030 =========== <br />
+  =========공지사항 삭제===========<br />
+  <form name="frm28" method="POST">
+    <%= Url %>notice/dnotice
+    <input type="text" name="StoreId" style="width:60px" placeholder="StoreId">
+    <input value="삭제" onclick="javascript: frm28.action='/notice/dnotice';"  type="submit" /> <br/>
+  </form><br />
+  1
+  =========QS_031 =========== <br />
+  =========회원가입===========<br />
+  <form name="frm29" method="POST">
+    <%= Url %>users/signup
+    <input type="text" name="SID" style="width:60px" placeholder="SID">
+    <input type="text" name="PassWord" style="width:60px" placeholder="PassWord">
+    <input type="text" name="Token" style="width:60px" placeholder="Token">
+    <input type="text" name="StoreId" style="width:60px" placeholder="StoreId">
+    <input type="text" name="TelNo" style="width:60px" placeholder="TelNo">
+    <input type="text" name="UseYn" style="width:60px" placeholder="UseYn">
+    <input value="등록" onclick="javascript: frm29.action='/users/signup';"  type="submit" /> <br/>
+  </form><br />
+  00004, 1234,1234,4,061-444-4444,Y
+
+  =========QS_032 =========== <br />
+  =========비밀번호 찾기===========<br />
+  <form name="frm30" method="POST">
+    <%= Url %>users/signup
+    <input type="text" name="SID" style="width:60px" placeholder="SID">
+    <input type="text" name="Token" style="width:60px" placeholder="Token">
+    <input value="조회" onclick="javascript: frm30.action='/users/forgetpassword';"  type="submit" /> <br/>
+  </form>
+  00005, 12341234 </br>
+
+  =========QS_033 =========== <br />
+  =========아이디 찾기===========<br />
+  <form name="frm31" method="POST">
+    <%= Url %>users/forgetSID
+    <input type="text" name="Token" style="width:60px" placeholder="Token">
+    <input value="조회" onclick="javascript: frm31.action='/users/forgetSID';"  type="submit" /> <br/>
+  </form>
+   4444 </br>
+
+
+  <br/><div style="width:40%;float:left;">
+    <table border="1" style="width:100%;line-height: 30px;"> 
+      ============================== <br />
+  =========매장상세정보===========<br />
+      <form name="frm2" method="POST">
+        <tr>
+          <td style="color:blue"> 매장ID : <input type="text" name="StoreId" style="width:80px"  placeholder="StoreId" > 1</td>
+        </tr>
+        <tr>
+          <td style="color:red"> 매장명 : <input type="text" name="StoreName" style="width:150px"  placeholder="StoreName" > 헤일로 로스터스</td>
+        </tr>
+        <tr>
+          <td style="color:red"> 오픈시간 : <input type="text" name="OpenTime" style="width:70px"  placeholder="OpenTime" > 08:00</td>
+        </tr>
+        <tr>
+          <td style="color:red">  마감시간 : <input type="text" name="CloseTime" style="width:70px"  placeholder="CloseTime">16:00 </td>
+        </tr>
+        <tr>
+          <td style="color:red"> 휴무일 : <input type="text" name="DayOff" style="width:80px" placeholder="DayOff" > 주말 휴무</td>
+        </tr>
+        <tr>
+          <td style="color:red"> 전화번호 : <input type="text" name="TelNo" style="width:88px"  placeholder="TelNo">061-334-8444</td>
+        </tr>
+        <tr>
+          <td style="color:red"> 기본주소 : <input type="text" name="Addr1" style="width:300px"  placeholder="Addr1">전라남도 나주시 금천면 </td>
+        </tr>
+        <tr>
+          <td style="color:red"> 상세주소 : <input type="text" name="Addr2" style="width:300px"  placeholder="Addr2">상아1길 21 </td>
+        </tr>
+        <tr>
+          <td style="color:red">위도 : <input type="text" name="Lat" style="width:89px" placeholder="Lat" >35.0224384</td>
+        </tr>
+        <tr>
+          <td style="color:red">경도 : <input type="text" name="Lon" style="width:89px"  placeholder="Lon">126.7924992</td>
+        </tr>
+        <tr>
+          <td>신군구코드 : <input type="text" name="SigunguCode" style="width:80px"  placeholder="SigunguCode">46170</td>
+        </tr>
+        <tr>
+          <td style="color:red">메인이미지 : <input type="text" name="MainImgUrl" style="width:300px"  placeholder="MainImgUrl"> </td>
+        </tr>
+        <tr>
+          <td>상세이미지 : <input type="text" name="DetailImgUrl" style="width:300px"  placeholder="DetailImgUrl"></td>
+        </tr>
+        <tr>
+          <td>사용여부 : <input type="text" name="SUseYn" style="width:40px"  placeholder="SUseYn">Y</td>
+        </tr>
+        <tr>
+          <td>InsertTime : <input type="text" name="InsertDT" style="width:120px"  placeholder="InsertDT"></td>
+        </tr>
+        <tr>
+          <td>
+            <%= Url %>store/Supdate
+            <input value="수정" onclick="javascript: frm2.action='/store/Supdate';"  type="submit" />
+           
+          </td>
+        </tr>
+      </form>
+    </table>
+  </div>
+  <div style="width:40%;float:left;">
+    <form name="frm3" method="POST">
+      <table border="1" style="width:100%;line-height: 30px;"> 
+        =========QS_009, QS_016=========== <br />
+        =========메뉴추가,삭제===========<br />
+        <tr>
+          <td style="color:blue">매장ID : <input type="text" name="StoreId" style="width:60px" placeholder="StoreId" >    1 </td>
+        </tr>
+        <tr>
+          <td style="color:blue">메뉴ID : <input type="text" name="MenuId" style="width:80px" placeholder="MenuId" >    DE001</td>       
+        </tr>
+        <tr>
+          <td  style="color:red"> 대분류코드 : <input type="text" name="LargeDivCd" style="width:20px" placeholder="LargeDivCd" >    D </td>
+        </tr>
+        <tr>
+          <td  style="color:red">중분류코드 : <input type="text" name="MidDivCd" style="width:20px"placeholder="MidDivCd" >    E</td>
+        </tr>
+        <tr>
+          <td  style="color:red">메뉴이름 : <input type="text" name="MenuName" style="width:140px"placeholder="MenuName" >    에스프레소</td>
+        </tr>
+        <tr>
+          <td style="color:red">  가격 : <input type="text" name="Price" style="width:66px"placeholder="Price" >    100</td>
+        </tr>
+        <tr>
+          <td  style="color:red">이미지경로 : <input type="text" name="ImgUrl" style="width:300px"placeholder="ImgUrl" ></td>
+        </tr>
+        <tr>
+          <td  style="color:red">옵션1 : <input type="text" name="OptionA" style="width:86px" placeholder="OptionA">    ICE,HOT</td>
+        </tr>
+        <tr>
+          <td  style="color:red">옵션2 : <input type="text" name="OptionB" style="width:86px"placeholder="OptionB" >    Large,Small</td>
+        </tr>
+        <tr>
+          <td  style="color:red">옵션3 : <input type="text" name="OptionC" style="width:86px" placeholder="OptionC">    개인컵,일회용컵,매장컵</td>
+        </tr>
+        <tr>
+          <td  style="color:red">추천 : <input type="text" name="Best" style="width:20px" placeholder="Best">Y</td>
+        </tr>
+        <tr>
+          <td  style="color:red">사용여부 <input type="text" name="UseYn" style="width:20px" placeholder="UseYn">Y</td>
+          </td>
+        </tr>
+        <tr>
+          <td> insertDT : <input type="text" name="InsertDate" style="width:140px"placeholder="InsertDate" ></td>
+        </tr>
+        <tr>
+          <td><%= Url %>menu/menuInfo
+            <input value="조회" onclick="javascript: frm3.action='/menu/menuInfo';" type="submit" /><br/> 
+            <%= Url %>/enu/Minsert
+            <input value="등록" onclick="javascript: frm3.action='/menu/Minsert';" type="submit" /><br/>
+            <%= Url %>menu/Mupdate
+            <input value="수정" onclick="javascript: frm3.action='/menu/Mupdate';"  type="submit" /><br/>
+            <%= Url %>menu/Mdelete
+            <input value="삭제" onclick="javascript: frm3.action='/menu/Mdelete';"  type="submit" /><br/>
+          </td>
+        </tr>
+    </table>
+  </form>
+  </div>
+ 
+</body>
+
+</html>
